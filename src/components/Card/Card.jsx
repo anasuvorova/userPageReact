@@ -25,15 +25,15 @@ const Card = ({ id, photo, name, surname, nik, birthday, town, email, phone }) =
         <span className="user-card__birthday">{birthday}</span>
         <span className="user-card__town">{town}</span>
         {/* <button className="user-card__button">add to friend!</button> */}
-        <Button  handler={() => setStatus(!status)}></Button>
+        <Button handler={() => setStatus(!status)}></Button>
       </div>
 
       {/* если состояние status === true тогда добавляем user-card__contacts--active иначе удаляем */}
 
       <div className={`user-card__contacts ${status === true ? "user-card__contacts--active" : ""}`}>
         <ul className="user-card__connection">
-          <li>email</li>
-          <li>phone</li>
+          <li>{email}</li>
+          <li>{phone}</li>
         </ul>
       </div>
     </div>
