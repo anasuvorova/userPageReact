@@ -30,7 +30,7 @@ const Card = ({ id, photo, name, surname, nik, birthday, town, email, phone }) =
 
       {/* если состояние status === true тогда добавляем user-card__contacts--active иначе удаляем */}
 
-      <div className={`user-card__contacts ${status === true ? "user-card__contacts--active" : ""}`}>
+      <div className={`user-card__contacts ${status ? "user-card__contacts--active" : ""}`}>
         <ul className="user-card__connection">
           <li>{email}</li>
           <li>{phone}</li>

@@ -1,5 +1,36 @@
 import Card from "./components/Card/Card";
+import { useEffect, useState } from "react";
+function App() {
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    fetch("https://randomuser.me/api/")
+      .then((res) => res.json())
+      .then((data) => {
+        const userData = data.results[0];
 
+        setUser({
+          photo: userData.picture.large,
+          name: userData.name.first,
+          surname: userData.name.last,
+          nik: userData.login.username,
+          birthday: new Date(userData.dob.date).toLocaleDateString(),
+          town: userData.location.city,
+          email: userData.email,
+          phone: userData.phone,
+        });
+      });
+  }, []);
+  console.log(user);
+
+  return (
+    <div>
+      <h1>Users</h1>
+      {user && <Card {...user} />}
+    </div>
+  );
+}
+export default App;
+/*
 const data = [
   {
     id: 4345,
@@ -45,7 +76,7 @@ function App() {
   );
 }
 
-export default App;
+*/
 
 // class Card {
 //   constructor({id, phone, name, surname, nik}) {
